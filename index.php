@@ -2,16 +2,30 @@
 include __DIR__ . "/partials/header.php";
 ?>
 
-<main class="container">
-<?php 
-foreach ($hotels as $hotel) {
-  echo "Nome: " . $hotel['name'] . "<br>";
-  echo "Descrizione: " . $hotel['description'] . "<br>";
-  echo "Parcheggio disponibile: " . ($hotel['parking'] ? 'Sì' : 'No') . "<br>";
-  echo "Voto: " . $hotel['vote'] . "<br>";
-  echo "Distanza dal centro: " . $hotel['distance_to_center'] . " km <br>"; 
-}
-?>
+<main>
+<div class="container py-4 ">
+  <table class="table table-bordered">
+    <thead>
+      <tr>
+        <th>Nome</th>
+        <th>Descrizione</th>
+        <th>Parcheggio</th>
+        <th>Voto</th>
+        <th>Distanza dal centro (km)</th>
+      </tr>
+    </thead>
+    <tbody>
+      <?php foreach ($hotels as $hotel) {  
+        echo "<td>{$hotel['name']} </td>";
+        echo "<td>{$hotel['description']} </td>";
+        echo "<td>" . ($hotel['parking'] ? 'Sì' : 'No') .  "</td>";
+        echo "<td>{$hotel['vote']} </td>";
+        echo "<td>{$hotel['distance_to_center']} </td>
+      </tr>";
+      } ?>
+    </tbody>
+  </table>
+</div>
 </main>
 
 <?php
