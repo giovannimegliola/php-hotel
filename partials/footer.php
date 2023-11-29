@@ -1,5 +1,5 @@
 <footer class="container">
-  made with &hearts; by Giovanni
+  Ti aspettiamo nel tuo hotel preferito!
 </footer>
 
 </body>

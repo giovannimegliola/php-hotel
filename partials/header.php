@@ -27,6 +27,10 @@ include __DIR__ . "/../Model/db.php";
               <option value="1">Si</option>
             </select>
           </div>
+          <div class="mb-3">
+            <label for="filterVote" class="form-label">Filtra Hotel per voto (n° stelle):</label>
+            <input type="number" name="filterVote" id="filterVote" min="1" max="5" step="1" class="form-control" placeholder="Inserisci il voto">
+          </div>
           <button type="submit" class="btn btn-primary">Cerca</button>
         </form>
       </div>
@@ -46,8 +50,10 @@ include __DIR__ . "/../Model/db.php";
               <?php
               $filteredHotel = [];
               $parking = isset($_GET['filterP']) ? $_GET['filterP'] : '';
+              $vote = isset($_GET['filterVote']) ? $_GET['filterVote'] : '';
+
               foreach ($hotels as $hotel) {
-                if ($parking === '' || $hotel['parking'] == $parking) {
+                if (($parking === '' || $hotel['parking'] == $parking) && ($vote === '' || $hotel['vote'] >= $vote)) {
                   $filteredHotel[] = $hotel;
                 }
               }
@@ -64,5 +70,4 @@ include __DIR__ . "/../Model/db.php";
         </table>
       </div>
     </div>
-
   </header>
